@@ -5,6 +5,38 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/bienvenido_texto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido a Easy Gym\n\nEs el momento\nLa posición en la bicicleta indoor es fundamental para un buen rendimiento, también para evitar lesiones y dolores. Siguiendo estos pasos no deseados te proponemos una distribución de bicicleta combinando música y bicicleta."
+        android:textColor="#F9F9F9"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="#80000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/boton_tomar_medidas"
+        app:layout_constraintVertical_chainStyle="packed"/>
+
+        <Button
+            android:id="@+id/boton_tomar_medidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tomar medidas"
+            android:backgroundTint="#C101DDD2"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bienvenido_texto"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
