@@ -5,14 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img"/>
 
     <TextView
         android:id="@+id/bienvenido_texto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bienvenido a Easy Gym\n\nEs el momento\nLa posición en la bicicleta indoor es fundamental para un buen rendimiento, también para evitar lesiones y dolores. Siguiendo estos pasos no deseados te proponemos una distribución de bicicleta combinando música y bicicleta."
+        android:text="Bienvenido a Easy Gym\n\nES EL MOMENTO\n\nLa posición en la bicicleta indoor es fundamental para un buen rendimiento, también para evitar lesiones y dolores. Siguiendo estos pasos no deseados te proponemos una distribución de bicicleta combinando música y bicicleta."
         android:textColor="#F9F9F9"
         android:textSize="18sp"
         android:gravity="center"
