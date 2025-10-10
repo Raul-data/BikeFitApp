@@ -9,7 +9,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import kotlin.jvm.java
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
@@ -59,6 +58,7 @@ class TomarMedidasActivity : AppCompatActivity() {
     private lateinit var textAntebrazo: TextView
     private lateinit var btnVolver: Button
     private lateinit var btnBorrar: Button
+    private lateinit var btnVerResultados: Button
 
     // Variables para almacenar las medidas ingresadas
     private var medidaEntrepierna: Int = 0
@@ -142,6 +142,25 @@ class TomarMedidasActivity : AppCompatActivity() {
         textAntebrazo = findViewById(R.id.text_antebrazo)
         btnVolver = findViewById(R.id.btn_volver)
         btnBorrar = findViewById(R.id.btn_Borrar)
+        btnVerResultados = findViewById(R.id.btn_ver_resultados)
+
+        // Restaurar medidas guardadas si existen
+        if (savedInstanceState != null) {
+            medidaEntrepierna = savedInstanceState.getInt("MEDIDA_ENTREPIERNA", 0)
+            medidaTronco = savedInstanceState.getInt("MEDIDA_TRONCO", 0)
+            medidaMuslo = savedInstanceState.getInt("MEDIDA_MUSLO", 0)
+            medidaPierna = savedInstanceState.getInt("MEDIDA_PIERNA", 0)
+            medidaBrazo = savedInstanceState.getInt("MEDIDA_BRAZO", 0)
+            medidaAntebrazo = savedInstanceState.getInt("MEDIDA_ANTEBRAZO", 0)
+
+            // Mostrar las medidas restauradas
+            if (medidaEntrepierna > 0) textEntrepierna.text = "$medidaEntrepierna cm"
+            if (medidaTronco > 0) textTronco.text = "$medidaTronco cm"
+            if (medidaMuslo > 0) textMuslo.text = "$medidaMuslo cm"
+            if (medidaPierna > 0) textPierna.text = "$medidaPierna cm"
+            if (medidaBrazo > 0) textBrazo.text = "$medidaBrazo cm"
+            if (medidaAntebrazo > 0) textAntebrazo.text = "$medidaAntebrazo cm"
+        }
 
         // Configurar los listeners para los ImageButton
         btnEntrepierna.setOnClickListener {
@@ -196,11 +215,34 @@ class TomarMedidasActivity : AppCompatActivity() {
             textAntebrazo.text = ""
         }
 
+        // Configurar el listener para el botón Ver Resultados
+        btnVerResultados.setOnClickListener {
+            val intent = Intent(this, ResultadosActivity::class.java)
+            intent.putExtra("ENTREPIERNA", medidaEntrepierna)
+            intent.putExtra("TRONCO", medidaTronco)
+            intent.putExtra("MUSLO", medidaMuslo)
+            intent.putExtra("PIERNA", medidaPierna)
+            intent.putExtra("BRAZO", medidaBrazo)
+            intent.putExtra("ANTEBRAZO", medidaAntebrazo)
+            startActivity(intent)
+        }
+
         // Ajustar los insets para que la UI no se solape con las barras del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    // Guardar las medidas cuando la Activity se destruye
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("MEDIDA_ENTREPIERNA", medidaEntrepierna)
+        outState.putInt("MEDIDA_TRONCO", medidaTronco)
+        outState.putInt("MEDIDA_MUSLO", medidaMuslo)
+        outState.putInt("MEDIDA_PIERNA", medidaPierna)
+        outState.putInt("MEDIDA_BRAZO", medidaBrazo)
+        outState.putInt("MEDIDA_ANTEBRAZO", medidaAntebrazo)
     }
 }

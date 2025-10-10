@@ -359,8 +359,8 @@
                     android:id="@+id/btn_volver"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_weight="2"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
                     android:backgroundTint="#6096D0"
                     android:text="Volver"
                     android:textColor="#000000"
@@ -371,12 +371,21 @@
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:text="Borrar"
                     android:textColor="#000000"
                     app:cornerRadius="50dp" />
 
+                <Button
+                    android:id="@+id/btn_ver_resultados"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#4CAF50"
+                    android:text="Resultados"
+                    android:textColor="#FFFFFF"
+                    app:cornerRadius="50dp" />
 
             </LinearLayout>
 

@@ -11,15 +11,52 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Aplicacion_Medidas_244">
+
+        <!-- Activity principal (pantalla de bienvenida) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Activity con los 6 botones de medidas -->
+        <activity
+            android:name=".TomarMedidasActivity"
+            android:exported="false" />
+
+        <!-- Activities de medición individual -->
+        <activity
+            android:name=".EntrepiernaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".TroncoActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MusloActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PiernaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".BrazoActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AntebrazoActivity"
+            android:exported="false" />
+
+        <!-- Activity de resultados -->
+        <activity
+            android:name=".ResultadosActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
