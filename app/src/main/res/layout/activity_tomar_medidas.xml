@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -50,7 +51,7 @@
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:columnCount="3"
                 android:rowCount="3">
 
@@ -113,7 +114,7 @@
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:columnCount="3"
                 android:orientation="horizontal"
                 android:rowCount="3">
@@ -178,7 +179,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -190,11 +191,22 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:paddingHorizontal="10dp"
                         android:text="Entrepierna:"
-                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/text_entrepierna"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:paddingHorizontal="10dp"
-                        android:textColor="@color/white"/>
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -206,11 +218,22 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:paddingHorizontal="10dp"
                         android:text="Tronco:"
-                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/text_tronco"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:paddingHorizontal="10dp"
-                        android:textColor="@color/white"/>
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -222,11 +245,22 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:paddingHorizontal="10dp"
                         android:text="Muslo:"
-                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/text_muslo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:paddingHorizontal="10dp"
-                        android:textColor="@color/white"/>
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,11 +272,22 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:paddingHorizontal="10dp"
                         android:text="Pierna:"
-                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/text_pierna"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:paddingHorizontal="10dp"
-                        android:textColor="@color/white"/>
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -254,11 +299,22 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:paddingHorizontal="10dp"
                         android:text="Brazo:"
-                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/text_brazo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:paddingHorizontal="10dp"
-                        android:textColor="@color/white"/>
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -270,16 +326,63 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="Antebrazo:"
-                        android:textSize="16sp"
                         android:layout_marginBottom="2dp"
                         android:paddingHorizontal="10dp"
-                        android:textColor="@color/white"/>
+                        android:text="Antebrazo:"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/text_antebrazo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:paddingHorizontal="10dp"
+                        android:text=""
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp">
+
+                <Button
+                    android:id="@+id/btn_volver"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="2"
+                    android:backgroundTint="#6096D0"
+                    android:text="Volver"
+                    android:textColor="#000000"
+                    app:cornerRadius="50dp" />
+
+                <Button
+                    android:id="@+id/btn_Borrar"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="2"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="Borrar"
+                    android:textColor="#000000"
+                    app:cornerRadius="50dp" />
+
+
+            </LinearLayout>
+
+
         </LinearLayout>
+
     </LinearLayout>
+
 </FrameLayout>
