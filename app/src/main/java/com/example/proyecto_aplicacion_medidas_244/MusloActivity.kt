@@ -1,0 +1,51 @@
+package com.example.proyecto_aplicacion_medidas_244
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import android.widget.SeekBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
+class MusloActivity : AppCompatActivity() {
+
+    private lateinit var textValorMedida: TextView
+    private lateinit var seekbarMedida: SeekBar
+    private lateinit var btnGuardar: Button
+
+    private val MEDIDA_MIN = 40
+    private val MEDIDA_MAX = 90
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_muslo)
+
+        textValorMedida = findViewById(R.id.text_valor_medida)
+        seekbarMedida = findViewById(R.id.seekbar_medida)
+        btnGuardar = findViewById(R.id.btn_guardar)
+
+        seekbarMedida.max = MEDIDA_MAX - MEDIDA_MIN
+        seekbarMedida.progress = 10 // 50 cm por defecto
+        actualizarTextoMedida(seekbarMedida.progress + MEDIDA_MIN)
+
+        seekbarMedida.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                actualizarTextoMedida(progress + MEDIDA_MIN)
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+
+        btnGuardar.setOnClickListener {
+            val medidaFinal = seekbarMedida.progress + MEDIDA_MIN
+            val intent = Intent()
+            intent.putExtra("MUSLO", medidaFinal)
+            setResult(RESULT_OK, intent)
+            finish()
+        }
+    }
+
+    private fun actualizarTextoMedida(medida: Int) {
+        textValorMedida.text = "$medida cm"
+    }
+}
