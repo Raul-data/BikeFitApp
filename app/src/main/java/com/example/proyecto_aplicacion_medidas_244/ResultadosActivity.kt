@@ -7,13 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
-// Clase para almacenar medidas relacionadas con la bicicleta
-data class Medidas(
-    val R: Int,   // Retroceso del sillín
-    val Sm: Int,  // Distancia sillín-manillar
-    val St: Int,  // Altura sillín-tija manillar
-    val Tj: Int   // Tija-manillar
-)
 
 class ResultadosActivity : AppCompatActivity() {
 
