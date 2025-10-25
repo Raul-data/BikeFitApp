@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Fondo  -->
-
+    <!-- ============================================================
+         FONDO
+         Color de fondo azul uniforme para toda la pantalla
+    ============================================================ -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#2E6592"/>
 
-    <!-- Contenido principal -->
+    <!-- ============================================================
+         CONTENIDO PRINCIPAL
+         LinearLayout vertical centrado horizontalmente
+    ============================================================ -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +25,10 @@
         android:padding="16dp"
         android:gravity="center_horizontal">
 
-        <!-- Título -->
+        <!-- ============================================================
+             TÍTULO DE LA PANTALLA
+             Indica que se va a medir la pierna
+        ============================================================ -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,14 +39,17 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Contenedor de la ilustración -->
+        <!-- ============================================================
+             CONTENEDOR DE LA ILUSTRACIÓN
+             FrameLayout permite centrar la imagen del muslo
+        ============================================================ -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginBottom="16dp">
 
-            <!-- Ilustración del cuerpo -->
+            <!-- Imagen representativa de la pierna -->
             <ImageView
                 android:id="@+id/img_ilustracion"
                 android:layout_width="200dp"
@@ -48,7 +60,9 @@
                 android:alpha="0.7"/>
         </FrameLayout>
 
-        <!-- Descripción -->
+        <!-- ============================================================
+             DESCRIPCIÓN DE CÓMO TOMAR LA MEDIDA
+        ============================================================ -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +74,9 @@
             android:background="#4D000000"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Valor de la medida -->
+        <!-- ============================================================
+             TEXTO QUE MUESTRA EL VALOR ACTUAL DEL SEEKBAR
+        ============================================================ -->
         <TextView
             android:id="@+id/text_valor_medida"
             android:layout_width="wrap_content"
@@ -71,7 +87,10 @@
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
-        <!-- SeekBar para ajustar la medida -->
+        <!-- ============================================================
+             SEEKBAR PARA AJUSTAR LA MEDIDA
+             Va de 0 a 50, se suma MEDIDA_MIN en Kotlin para obtener valor real
+        ============================================================ -->
         <SeekBar
             android:id="@+id/seekbar_medida"
             android:layout_width="match_parent"
@@ -84,8 +103,12 @@
             android:layout_marginBottom="24dp"
             android:layout_marginHorizontal="24dp"/>
 
-        <!-- Botón Guardar -->
-        <Button
+        <!-- ============================================================
+             BOTÓN GUARDAR
+             Devuelve el valor seleccionado a la Activity anterior
+             Nota: para usar app:cornerRadius se recomienda MaterialButton
+        ============================================================ -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_guardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,5 +123,4 @@
             android:layout_marginBottom="32dp"/>
 
     </LinearLayout>
-
 </FrameLayout>

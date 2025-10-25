@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Layout principal de la actividad TomarMedidasActivity -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,14 +8,14 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-
+    <!-- Imagen de fondo que ocupa toda la pantalla -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/bc_fondo_spinning" />
 
-
+    <!-- Contenedor principal de todos los elementos visibles -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,6 +23,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Título principal de la pantalla -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,6 +34,7 @@
             android:textColor="#FF8800"
             android:textSize="40sp" />
 
+        <!-- Subtítulo o descripción de la pantalla -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,12 +45,14 @@
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
+        <!-- Contenedor vertical para los botones de medición y resultados -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
+            <!-- Primer GridLayout para Entrepierna, Tronco y Muslo -->
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +60,7 @@
                 android:columnCount="3"
                 android:rowCount="3">
 
+                <!-- Botón Entrepierna -->
                 <ImageButton
                     android:id="@+id/btn_entrepierna"
                     android:layout_width="100dp"
@@ -65,7 +71,7 @@
                     android:src="@drawable/bc_entrepierna"
                     android:text="Entrepierna" />
 
-
+                <!-- Botón Tronco -->
                 <ImageButton
                     android:id="@+id/btn_tronco"
                     android:layout_width="100dp"
@@ -76,6 +82,7 @@
                     android:src="@drawable/bc_tronco"
                     android:text="Tronco" />
 
+                <!-- Botón Muslo -->
                 <ImageButton
                     android:id="@+id/btn_muslo"
                     android:layout_width="100dp"
@@ -86,6 +93,7 @@
                     android:src="@drawable/bc_muslo"
                     android:text="Muslo" />
 
+                <!-- Etiquetas debajo de cada botón -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -111,6 +119,7 @@
                     android:textSize="12sp" />
             </GridLayout>
 
+            <!-- Segundo GridLayout para Pierna, Brazo y Antebrazo -->
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,6 +128,7 @@
                 android:orientation="horizontal"
                 android:rowCount="3">
 
+                <!-- Botón Pierna -->
                 <ImageButton
                     android:id="@+id/btn_pierna"
                     android:layout_width="100dp"
@@ -129,6 +139,7 @@
                     android:src="@drawable/bc_pierna"
                     android:text="Pierna" />
 
+                <!-- Botón Brazo -->
                 <ImageButton
                     android:id="@+id/btn_brazo"
                     android:layout_width="100dp"
@@ -139,7 +150,7 @@
                     android:src="@drawable/bc_brazo"
                     android:text="Brazo" />
 
-
+                <!-- Botón Antebrazo -->
                 <ImageButton
                     android:id="@+id/btn_antebrazo"
                     android:layout_width="100dp"
@@ -150,6 +161,7 @@
                     android:src="@drawable/bc_antebrazo"
                     android:text="Antebrazo" />
 
+                <!-- Etiquetas debajo de cada botón -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -173,15 +185,18 @@
                     android:text="Antebrazo"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp" />
-
             </GridLayout>
 
+            <!-- Contenedor de medidas capturadas -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
+                <!-- Bloques de medidas: Entrepierna, Tronco, Muslo, Pierna, Brazo, Antebrazo -->
+                <!-- Cada LinearLayout horizontal muestra etiqueta y medida -->
+                <!-- Entrepierna -->
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
@@ -209,6 +224,7 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
+                <!-- Tronco -->
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
@@ -236,6 +252,7 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
+                <!-- Muslo -->
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
@@ -263,6 +280,7 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
+                <!-- Pierna -->
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
@@ -290,6 +308,7 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
+                <!-- Brazo -->
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
@@ -317,6 +336,7 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
+                <!-- Antebrazo -->
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
@@ -343,10 +363,9 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
-
-
             </LinearLayout>
 
+            <!-- Contenedor horizontal para los botones inferiores -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -355,6 +374,7 @@
                 android:orientation="horizontal"
                 android:paddingHorizontal="10dp">
 
+                <!-- Botón Volver -->
                 <Button
                     android:id="@+id/btn_volver"
                     android:layout_width="0dp"
@@ -366,6 +386,7 @@
                     android:textColor="#000000"
                     app:cornerRadius="50dp" />
 
+                <!-- Botón Borrar -->
                 <Button
                     android:id="@+id/btn_Borrar"
                     android:layout_width="0dp"
@@ -377,6 +398,7 @@
                     android:textColor="#000000"
                     app:cornerRadius="50dp" />
 
+                <!-- Botón Ver Resultados -->
                 <Button
                     android:id="@+id/btn_ver_resultados"
                     android:layout_width="0dp"
@@ -386,12 +408,7 @@
                     android:text="Resultados"
                     android:textColor="#FFFFFF"
                     app:cornerRadius="50dp" />
-
             </LinearLayout>
-
-
         </LinearLayout>
-
     </LinearLayout>
-
 </FrameLayout>

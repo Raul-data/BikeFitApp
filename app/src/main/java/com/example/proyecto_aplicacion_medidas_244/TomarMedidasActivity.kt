@@ -12,10 +12,10 @@ import androidx.core.view.WindowInsetsCompat
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
-// Clase para almacenar las medidas (CORREGIDA)
+// Clase de datos para almacenar las medidas relacionadas con la bici
 data class Medidas(val R: Int, val Sm: Int, val St: Int, val Tj: Int)
 
-// Extension para redondear a un numero especifico de decimales
+// Extensión para redondear un Float a un número específico de decimales
 fun Float.redondear(decimals: Int): Float {
     val factor = 10.0.pow(decimals.toDouble()).toFloat()
     return (this * factor).roundToInt() / factor
@@ -23,7 +23,7 @@ fun Float.redondear(decimals: Int): Float {
 
 class TomarMedidasActivity : AppCompatActivity() {
 
-    // Mapa de datos de entrepierna
+    // Mapa de datos de entrepierna y sus medidas asociadas
     private val entrepierna: Map<Int, Medidas> = mapOf(
         75 to Medidas(R = 5, Sm = 49, St = 5, Tj = 10),
         76 to Medidas(R = 5, Sm = 49, St = 5, Tj = 11),
@@ -43,7 +43,7 @@ class TomarMedidasActivity : AppCompatActivity() {
         90 to Medidas(R = 9, Sm = 60, St = 9, Tj = 16)
     )
 
-    // Declaración de variables para los elementos de la UI
+    // Declaración de variables para los elementos de la UI (botones e indicadores)
     private lateinit var btnEntrepierna: ImageButton
     private lateinit var btnTronco: ImageButton
     private lateinit var btnMuslo: ImageButton
@@ -60,7 +60,7 @@ class TomarMedidasActivity : AppCompatActivity() {
     private lateinit var btnBorrar: Button
     private lateinit var btnVerResultados: Button
 
-    // Variables para almacenar las medidas ingresadas
+    // Variables para almacenar temporalmente las medidas ingresadas
     private var medidaEntrepierna: Int = 0
     private var medidaTronco: Int = 0
     private var medidaMuslo: Int = 0
@@ -72,6 +72,7 @@ class TomarMedidasActivity : AppCompatActivity() {
     private val entrepiernaResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
+        // Si se obtiene un resultado válido, actualizar la variable y el TextView
         if (result.resultCode == RESULT_OK) {
             medidaEntrepierna = result.data?.getIntExtra("ENTREPIERNA", 0) ?: 0
             textEntrepierna.text = "$medidaEntrepierna cm"
@@ -125,9 +126,9 @@ class TomarMedidasActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tomar_medidas)
+        setContentView(R.layout.activity_tomar_medidas) // Asocia la UI definida en XML
 
-        // Inicializar los elementos de la UI
+        // Inicializar los elementos de la UI con findViewById
         btnEntrepierna = findViewById(R.id.btn_entrepierna)
         btnTronco = findViewById(R.id.btn_tronco)
         btnMuslo = findViewById(R.id.btn_muslo)
@@ -144,7 +145,7 @@ class TomarMedidasActivity : AppCompatActivity() {
         btnBorrar = findViewById(R.id.btn_Borrar)
         btnVerResultados = findViewById(R.id.btn_ver_resultados)
 
-        // Restaurar medidas guardadas si existen
+        // Restaurar medidas guardadas si la Activity fue destruida previamente
         if (savedInstanceState != null) {
             medidaEntrepierna = savedInstanceState.getInt("MEDIDA_ENTREPIERNA", 0)
             medidaTronco = savedInstanceState.getInt("MEDIDA_TRONCO", 0)
@@ -153,7 +154,7 @@ class TomarMedidasActivity : AppCompatActivity() {
             medidaBrazo = savedInstanceState.getInt("MEDIDA_BRAZO", 0)
             medidaAntebrazo = savedInstanceState.getInt("MEDIDA_ANTEBRAZO", 0)
 
-            // Mostrar las medidas restauradas
+            // Mostrar las medidas restauradas en los TextView correspondientes
             if (medidaEntrepierna > 0) textEntrepierna.text = "$medidaEntrepierna cm"
             if (medidaTronco > 0) textTronco.text = "$medidaTronco cm"
             if (medidaMuslo > 0) textMuslo.text = "$medidaMuslo cm"
@@ -162,7 +163,8 @@ class TomarMedidasActivity : AppCompatActivity() {
             if (medidaAntebrazo > 0) textAntebrazo.text = "$medidaAntebrazo cm"
         }
 
-        // Configurar los listeners para los ImageButton
+        // Configuración de listeners para cada ImageButton
+        // Abre la actividad correspondiente y recibe la medida
         btnEntrepierna.setOnClickListener {
             val intent = Intent(this, EntrepiernaActivity::class.java)
             entrepiernaResultLauncher.launch(intent)
@@ -193,12 +195,10 @@ class TomarMedidasActivity : AppCompatActivity() {
             antebrazoResultLauncher.launch(intent)
         }
 
-        // Configurar el listener para el botón Volver
-        btnVolver.setOnClickListener {
-            finish() // Regresa a la actividad anterior
-        }
+        // Botón Volver: regresa a la actividad anterior
+        btnVolver.setOnClickListener { finish() }
 
-        // Configurar el listener para el botón Borrar
+        // Botón Borrar: reinicia todas las medidas y limpia los TextView
         btnBorrar.setOnClickListener {
             medidaEntrepierna = 0
             medidaTronco = 0
@@ -215,7 +215,7 @@ class TomarMedidasActivity : AppCompatActivity() {
             textAntebrazo.text = ""
         }
 
-        // Configurar el listener para el botón Ver Resultados
+        // Botón Ver Resultados: abre ResultadosActivity pasando todas las medidas
         btnVerResultados.setOnClickListener {
             val intent = Intent(this, ResultadosActivity::class.java)
             intent.putExtra("ENTREPIERNA", medidaEntrepierna)
@@ -227,7 +227,7 @@ class TomarMedidasActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Ajustar los insets para que la UI no se solape con las barras del sistema
+        // Ajuste de insets para que la UI no se superponga con la status/navigation bar
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -235,7 +235,7 @@ class TomarMedidasActivity : AppCompatActivity() {
         }
     }
 
-    // Guardar las medidas cuando la Activity se destruye
+    // Guardar las medidas cuando la Activity se destruye (rotación o cierre)
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("MEDIDA_ENTREPIERNA", medidaEntrepierna)

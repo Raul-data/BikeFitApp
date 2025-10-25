@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT: activity_antebrazo.xml
+    Esta interfaz permite al usuario seleccionar la medida del antebrazo mediante un SeekBar.
+    Incluye un fondo visual, un texto explicativo, una ilustración, un valor dinámico y un botón de guardado.
+-->
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Fondo azul con patrón de cuadrícula -->
+    <!--
+        CAPA 1: Fondo decorativo
+        Se usa un ImageView como fondo principal con una imagen semitransparente.
+        Esto da un efecto visual agradable sin distraer del contenido principal.
+    -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/bc_fondo_spinning"
-        android:alpha="0.3"/>
+        android:alpha="0.3" />
 
+    <!--
+        CAPA 2: Superposición de color azul
+        Añade un tono uniforme encima del fondo para mejorar la legibilidad del texto.
+        El color se aplica sobre toda la pantalla.
+    -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#2E6592"/>
+        android:background="#2E6592" />
 
-    <!-- Contenido principal -->
+    <!--
+        CAPA 3: Contenido principal (estructura vertical)
+        Aquí se colocan todos los elementos visibles (título, imagen, texto, barra y botón).
+        Se usa un LinearLayout para apilar los elementos verticalmente.
+    -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,7 +44,12 @@
         android:padding="16dp"
         android:gravity="center_horizontal">
 
-        <!-- Título -->
+        <!--
+            TÍTULO PRINCIPAL
+            Informa al usuario sobre la medida que está ajustando.
+            - Tamaño de texto grande (24sp)
+            - Color blanco para contraste con el fondo azul
+        -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,16 +58,27 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
 
-        <!-- Contenedor de la ilustración -->
+        <!--
+            CONTENEDOR DE ILUSTRACIÓN
+            Se usa FrameLayout para centrar una imagen representativa del antebrazo.
+            - Ocupa espacio flexible gracias a layout_weight="1"
+            - Sirve para mantener la proporción visual en diferentes pantallas
+        -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginBottom="16dp">
 
-            <!-- Ilustración del cuerpo -->
+            <!--
+                ILUSTRACIÓN DEL ANTEBRAZO
+                Imagen de referencia visual para el usuario.
+                - Centrada en pantalla
+                - Tamaño fijo para mantener proporciones
+                - alpha 0.7 para suavizar su presencia
+            -->
             <ImageView
                 android:id="@+id/img_ilustracion"
                 android:layout_width="200dp"
@@ -51,10 +86,16 @@
                 android:layout_gravity="center"
                 android:src="@drawable/bc_antebrazo"
                 android:scaleType="fitCenter"
-                android:alpha="0.7"/>
+                android:alpha="0.7" />
         </FrameLayout>
 
-        <!-- Descripción -->
+        <!--
+            TEXTO DESCRIPTIVO / INSTRUCCIONES
+            Explica cómo debe realizarse la medición del antebrazo.
+            - Centrado horizontalmente
+            - Fondo semitransparente negro para mejorar la lectura
+            - Padding interno para separar el texto del borde
+        -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,9 +105,14 @@
             android:gravity="center"
             android:padding="16dp"
             android:background="#4D000000"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
 
-        <!-- Valor de la medida -->
+        <!--
+            TEXTO DE VALOR ACTUAL
+            Muestra dinámicamente la medida seleccionada en la barra (SeekBar).
+            - El valor inicial se define en el código Kotlin
+            - Se actualiza con cada movimiento de la barra
+        -->
         <TextView
             android:id="@+id/text_valor_medida"
             android:layout_width="wrap_content"
@@ -75,9 +121,15 @@
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
-        <!-- SeekBar para ajustar la medida -->
+        <!--
+            SEEKBAR (BARRA DESLIZANTE)
+            Permite al usuario ajustar la medida manualmente.
+            - "max" define el rango total (ajustado con el código Kotlin)
+            - "progress" define el valor inicial
+            - Los tintes personalizan los colores de la barra y el control
+        -->
         <SeekBar
             android:id="@+id/seekbar_medida"
             android:layout_width="match_parent"
@@ -88,9 +140,15 @@
             android:thumbTint="#00BCD4"
             android:progressBackgroundTint="#FFFFFF"
             android:layout_marginBottom="24dp"
-            android:layout_marginHorizontal="24dp"/>
+            android:layout_marginHorizontal="24dp" />
 
-        <!-- Botón Guardar -->
+        <!--
+            BOTÓN "GUARDAR"
+            Envía el valor seleccionado al código Kotlin para ser devuelto a la actividad anterior.
+            - Usa un color llamativo (#00BCD4)
+            - Bordes redondeados gracias a app:cornerRadius
+            - paddingHorizontal y paddingVertical agrandan la zona táctil
+        -->
         <Button
             android:id="@+id/btn_guardar"
             android:layout_width="wrap_content"
@@ -103,7 +161,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="25dp"
-            android:layout_marginBottom="32dp"/>
+            android:layout_marginBottom="32dp" />
 
     </LinearLayout>
 

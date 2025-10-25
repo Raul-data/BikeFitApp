@@ -9,57 +9,78 @@ import androidx.appcompat.app.AppCompatActivity
 
 class EntrepiernaActivity : AppCompatActivity() {
 
+    // Referencias a los elementos de la interfaz (TextView, SeekBar y Button)
     private lateinit var textValorMedida: TextView
     private lateinit var seekbarMedida: SeekBar
     private lateinit var btnGuardar: Button
 
-    // Rango de medidas: 60 a 100 cm
+    // Valores mínimo y máximo permitidos para la medida (en centímetros)
     private val MEDIDA_MIN = 60
     private val MEDIDA_MAX = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Se asocia esta Activity con su layout correspondiente (activity_entrepierna.xml)
         setContentView(R.layout.activity_entrepierna)
 
-        // Inicializar vistas
+        // ============================================================
+        // INICIALIZACIÓN DE VISTAS
+        // Conectamos las variables con los componentes definidos en el XML
+        // ============================================================
         textValorMedida = findViewById(R.id.text_valor_medida)
         seekbarMedida = findViewById(R.id.seekbar_medida)
         btnGuardar = findViewById(R.id.btn_guardar)
 
-        // Configurar el SeekBar
-        // El SeekBar va de 0 a (MEDIDA_MAX - MEDIDA_MIN)
+        // ============================================================
+        // CONFIGURACIÓN DEL SEEK BAR
+        // ============================================================
+        // El SeekBar permite seleccionar valores desde 0 hasta (MEDIDA_MAX - MEDIDA_MIN)
+        // Luego, a ese valor se le suma MEDIDA_MIN para obtener el valor real.
         seekbarMedida.max = MEDIDA_MAX - MEDIDA_MIN
-        seekbarMedida.progress = 18 // Valor inicial: 78 cm (60 + 18 = 78)
+        seekbarMedida.progress = 18 // Posición inicial (equivale a 78 cm = 60 + 18)
 
-        // Mostrar valor inicial
+        // Mostrar el valor inicial en pantalla
         actualizarTextoMedida(seekbarMedida.progress + MEDIDA_MIN)
 
-        // Listener para el SeekBar
+        // ============================================================
+        // LISTENER DEL SEEK BAR
+        // Detecta cuando el usuario cambia el valor del deslizador
+        // ============================================================
         seekbarMedida.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+            // Método que se ejecuta cada vez que cambia el valor del SeekBar
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 val medidaActual = progress + MEDIDA_MIN
-                actualizarTextoMedida(medidaActual)
+                actualizarTextoMedida(medidaActual) // Actualiza el texto con la nueva medida
             }
 
+            // No se usan estos dos métodos, pero deben declararse por la interfaz
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                // No necesitamos hacer nada aquí
+                // Llamado al iniciar el toque sobre el deslizador
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                // No necesitamos hacer nada aquí
+                // Llamado al soltar el deslizador
             }
         })
 
-        // Listener para el botón Guardar
+        // ============================================================
+        // BOTÓN GUARDAR
+        // Envía el valor seleccionado a la Activity que llamó a esta
+        // ============================================================
         btnGuardar.setOnClickListener {
-            val medidaFinal = seekbarMedida.progress + MEDIDA_MIN
-            val intent = Intent()
-            intent.putExtra("ENTREPIERNA", medidaFinal)
-            setResult(RESULT_OK, intent)
-            finish()
+            val medidaFinal = seekbarMedida.progress + MEDIDA_MIN // Valor final elegido
+            val intent = Intent() // Se crea un intent vacío para devolver datos
+            intent.putExtra("ENTREPIERNA", medidaFinal) // Se añade el valor como extra
+            setResult(RESULT_OK, intent) // Se devuelve el resultado a la actividad anterior
+            finish() // Cierra la actividad actual y vuelve atrás
         }
     }
 
+    // ============================================================
+    // MÉTODO AUXILIAR
+    // Actualiza el texto del TextView para mostrar la medida actual
+    // ============================================================
     private fun actualizarTextoMedida(medida: Int) {
         textValorMedida.text = "$medida cm"
     }

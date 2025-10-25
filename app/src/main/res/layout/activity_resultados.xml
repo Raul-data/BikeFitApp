@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/bc_medidas">
 
-
-    <!-- Contenido principal -->
+    <!-- ScrollView para permitir desplazamiento si el contenido es más grande que la pantalla -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
+        <!-- Contenedor principal vertical -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             android:padding="16dp"
             android:gravity="center">
 
-            <!-- Título -->
+            <!-- Título de la pantalla -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,8 +30,7 @@
                 android:layout_marginTop="169dp"
                 android:layout_marginBottom="16dp"/>
 
-
-            <!-- Lista de resultados -->
+            <!-- Contenedor de la lista de resultados, con fondo semitransparente -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,85 +39,70 @@
                 android:padding="16dp"
                 android:layout_marginHorizontal="8dp">
 
-                <!-- A: Altura del sillín -->
+                <!-- Fila A: Altura del sillín -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingVertical="8dp">
 
+                    <!-- Letra identificativa de la medida -->
                     <TextView
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:text="A:"
-                        android:textColor="#FF8800"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:text="A:"/>
 
+                    <!-- Nombre de la medida -->
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Altura"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:paddingStart="8dp"/>
+                        android:text="Altura"/>
 
+                    <!-- Valor calculado que se actualizará dinámicamente -->
                     <TextView
                         android:id="@+id/tv_alturaSillin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="69.0 cm"
-                        android:textColor="#00BCD4"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:text="69.0 cm"/>
                 </LinearLayout>
 
+                <!-- Separador horizontal -->
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#33FFFFFF"/>
+                    android:layout_height="1dp"/>
 
-                <!-- B: Retroceso del sillín -->
+                <!-- Fila B: Retroceso del sillín -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingVertical="8dp">
 
+                    <!-- Letra identificativa -->
                     <TextView
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:text="B:"
-                        android:textColor="#FF8800"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:text="B:"/>
 
+                    <!-- Nombre de la medida -->
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Retroceso del sillín"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:paddingStart="8dp"/>
+                        android:text="Retroceso del sillín"/>
 
+                    <!-- Valor calculado dinámicamente -->
                     <TextView
                         android:id="@+id/tv_retrocesoSillin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="6 cm"
-                        android:textColor="#00BCD4"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:text="6 cm"/>
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#33FFFFFF"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"/>
 
-                <!-- C: Altura manillar -->
+                <!-- Fila C: Altura del manillar -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,36 +112,24 @@
                     <TextView
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:text="C:"
-                        android:textColor="#FF8800"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:text="C:"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Altura manillar"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:paddingStart="8dp"/>
+                        android:text="Altura manillar"/>
 
                     <TextView
                         android:id="@+id/tv_alturaSillinTijaManillar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="6 cm"
-                        android:textColor="#00BCD4"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:text="6 cm"/>
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#33FFFFFF"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"/>
 
-                <!-- D: Largo cuadro -->
+                <!-- Fila D: Largo del cuadro -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -167,36 +139,24 @@
                     <TextView
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:text="D:"
-                        android:textColor="#FF8800"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:text="D:"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Largo cuadro"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:paddingStart="8dp"/>
+                        android:text="Largo cuadro"/>
 
                     <TextView
                         android:id="@+id/tv_largoCuadro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="53.0 cm"
-                        android:textColor="#00BCD4"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:text="53.0 cm"/>
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#33FFFFFF"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"/>
 
-                <!-- E: Tija manillar -->
+                <!-- Fila E: Tija manillar -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -206,36 +166,24 @@
                     <TextView
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:text="E:"
-                        android:textColor="#FF8800"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:text="E:"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Tija manillar"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:paddingStart="8dp"/>
+                        android:text="Tija manillar"/>
 
                     <TextView
                         android:id="@+id/tv_tijaManillar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12 cm"
-                        android:textColor="#00BCD4"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:text="12 cm"/>
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#33FFFFFF"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"/>
 
-                <!-- Sillín - Manillar -->
+                <!-- Fila SM: Distancia entre sillín y manillar -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -243,49 +191,31 @@
                     android:paddingVertical="8dp">
 
                     <TextView
-                        android:layout_width="30dp"
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:text="SM:"
-                        android:textColor="#FF8800"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:text="SM:"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Sillín - Manillar"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:paddingStart="8dp"/>
+                        android:text="Sillín - Manillar"/>
 
                     <TextView
                         android:id="@+id/tv_sillinManillar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="50 cm"
-                        android:textColor="#00BCD4"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:text="50 cm"/>
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Botón Comenzar/Volver -->
+            <!-- Botón para volver o comenzar de nuevo -->
             <Button
                 android:id="@+id/btn_comenzar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comenzar"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#9E7B4E"
-                android:paddingHorizontal="64dp"
-                android:paddingVertical="16dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:cornerRadius="300dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="24dp"/>
+                android:text="Comenzar"/>
 
         </LinearLayout>
 

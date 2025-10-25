@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,12 +8,22 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- ============================================================
+         IMAGEN DE FONDO
+         Se adapta a toda la pantalla y se centra/corta automáticamente
+         para cubrir todo el layout.
+    ============================================================ -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/img"/>
+        android:src="@drawable/img" />
 
+    <!-- ============================================================
+         TEXTO DE BIENVENIDA
+         Texto centrado con fondo semitransparente para destacar sobre la imagen.
+         Se coloca entre el top de la pantalla y el botón inferior usando constraint layout.
+    ============================================================ -->
     <TextView
         android:id="@+id/bienvenido_texto"
         android:layout_width="match_parent"
@@ -27,21 +38,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/boton_tomar_medidas"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintVertical_chainStyle="packed" />
+    <!-- Vertical chain packed centra el texto entre top y bottom -->
 
-        <Button
-            android:id="@+id/boton_tomar_medidas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tomar medidas"
-            android:backgroundTint="#C101DDD2"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bienvenido_texto"/>
-
-
+    <!-- ============================================================
+         BOTÓN "TOMAR MEDIDAS"
+         Centrado horizontalmente en la parte inferior de la pantalla.
+         Conecta verticalmente con el TextView de bienvenida.
+    ============================================================ -->
+    <Button
+        android:id="@+id/boton_tomar_medidas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tomar medidas"
+        android:backgroundTint="#C101DDD2"
+        android:textColor="#FFFFFF"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bienvenido_texto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

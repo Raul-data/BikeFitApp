@@ -7,9 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
+// Clase para almacenar medidas relacionadas con la bicicleta
+data class Medidas(
+    val R: Int,   // Retroceso del sillín
+    val Sm: Int,  // Distancia sillín-manillar
+    val St: Int,  // Altura sillín-tija manillar
+    val Tj: Int   // Tija-manillar
+)
+
 class ResultadosActivity : AppCompatActivity() {
 
-    // Mapa de datos de entrepierna
+    // Mapa de datos: entrepierna -> Medidas
     private val entrepierna: Map<Int, Medidas> = mapOf(
         75 to Medidas(R = 5, Sm = 49, St = 5, Tj = 10),
         76 to Medidas(R = 5, Sm = 49, St = 5, Tj = 11),
@@ -29,6 +37,7 @@ class ResultadosActivity : AppCompatActivity() {
         90 to Medidas(R = 9, Sm = 60, St = 9, Tj = 16)
     )
 
+    // Vistas
     private lateinit var tvAlturaSillin: TextView
     private lateinit var tvRetrocesoSillin: TextView
     private lateinit var tvAlturaSillinTijaManillar: TextView
@@ -52,39 +61,33 @@ class ResultadosActivity : AppCompatActivity() {
 
         // Recibir datos del Intent
         val medidaEntrepierna = intent.getIntExtra("ENTREPIERNA", 0)
-        val medidaTronco = intent.getIntExtra("TRONCO", 0)
-        val medidaMuslo = intent.getIntExtra("MUSLO", 0)
-        val medidaPierna = intent.getIntExtra("PIERNA", 0)
-        val medidaBrazo = intent.getIntExtra("BRAZO", 0)
-        val medidaAntebrazo = intent.getIntExtra("ANTEBRAZO", 0)
 
         // Calcular y mostrar resultados
         calcularResultados(medidaEntrepierna)
 
-        // Botón Comenzar (vuelve a la pantalla principal)
+        // Botón Comenzar vuelve a la pantalla anterior
         btnComenzar.setOnClickListener {
-            finish() // Cierra esta activity y vuelve a la anterior
+            finish()
         }
     }
 
     private fun calcularResultados(entrepiernaInt: Int) {
-        // Buscar las medidas correspondientes en el mapa
         val medidas = entrepierna[entrepiernaInt]
 
         if (medidas != null && entrepiernaInt > 0) {
-            // Calcular altura del sillín: entrepierna * 0.885
+            // Altura del sillín: entrepierna * 0.885
             val alturaSillin = (entrepiernaInt * 0.885).redondear(1)
 
-            // Calcular largo del cuadro: (entrepierna * 0.65) + 2
+            // Largo del cuadro: entrepierna * 0.65 + 2
             val largoCuadro = ((entrepiernaInt * 0.65) + 2).redondear(0)
 
-            // Obtener valores del mapa
+            // Valores desde el mapa
             val retrocesoSillin = medidas.R
             val sillinManillar = medidas.Sm
             val alturaSillinTijaManillar = medidas.St
             val tijaManillar = medidas.Tj
 
-            // Mostrar resultados
+            // Mostrar resultados en TextViews
             tvAlturaSillin.text = "$alturaSillin cm"
             tvRetrocesoSillin.text = "$retrocesoSillin cm"
             tvAlturaSillinTijaManillar.text = "$alturaSillinTijaManillar cm"
@@ -92,7 +95,7 @@ class ResultadosActivity : AppCompatActivity() {
             tvTijaManillar.text = "$tijaManillar cm"
             tvSillinManillar.text = "$sillinManillar cm"
         } else {
-            // Si no hay datos válidos, mostrar mensaje
+            // Valores N/A si no hay datos
             tvAlturaSillin.text = "N/A"
             tvRetrocesoSillin.text = "N/A"
             tvAlturaSillinTijaManillar.text = "N/A"
@@ -102,8 +105,7 @@ class ResultadosActivity : AppCompatActivity() {
         }
     }
 
-    // Función de extensión para redondear (ya está definida en TomarMedidasActivity,
-    // pero la necesitamos aquí también)
+    // Función de extensión para redondear
     private fun Double.redondear(decimals: Int): Double {
         val factor = 10.0.pow(decimals.toDouble())
         return (this * factor).roundToInt() / factor

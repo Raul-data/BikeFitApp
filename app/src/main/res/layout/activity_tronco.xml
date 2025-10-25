@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Fondo azul con patrón de cuadrícula -->
-
+    <!-- Fondo azul que cubre toda la pantalla -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#2E6592"/>
 
-    <!-- Contenido principal -->
+    <!-- Contenedor principal de todos los elementos -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +18,7 @@
         android:padding="16dp"
         android:gravity="center_horizontal">
 
-        <!-- Título -->
+        <!-- Título de la actividad -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,14 +29,14 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Contenedor de la ilustración -->
+        <!-- Contenedor para la ilustración del tronco -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginBottom="16dp">
 
-            <!-- Ilustración del cuerpo -->
+            <!-- Imagen ilustrativa del tronco -->
             <ImageView
                 android:id="@+id/img_ilustracion"
                 android:layout_width="200dp"
@@ -48,7 +47,7 @@
                 android:alpha="0.7"/>
         </FrameLayout>
 
-        <!-- Descripción -->
+        <!-- Descripción con instrucciones para tomar la medida -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +59,7 @@
             android:background="#4D000000"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Valor de la medida -->
+        <!-- TextView que muestra la medida actual -->
         <TextView
             android:id="@+id/text_valor_medida"
             android:layout_width="wrap_content"
@@ -71,7 +70,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
-        <!-- SeekBar para ajustar la medida -->
+        <!-- SeekBar para ajustar la medida del tronco -->
         <SeekBar
             android:id="@+id/seekbar_medida"
             android:layout_width="match_parent"
@@ -84,7 +83,7 @@
             android:layout_marginBottom="24dp"
             android:layout_marginHorizontal="24dp"/>
 
-        <!-- Botón Guardar -->
+        <!-- Botón para guardar la medida -->
         <Button
             android:id="@+id/btn_guardar"
             android:layout_width="wrap_content"
